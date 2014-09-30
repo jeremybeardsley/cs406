@@ -7,20 +7,22 @@ package edu.ccsu.classwork.cs407.assignment2;
  * @author Andrew McCoy
  */
 public class CreditAccount extends Account {
-    
-    /** The credit limit. */
+
+    /**
+     * The credit limit.
+     */
     protected int crLimit;
 
     /**
      * Instantiates a new credit account with specified Balance, Name, and Credit Limit
      *
      * @param balance The balance
-     * @param name The name
-     * @param limit The limit
+     * @param name    The name
+     * @param limit   The limit
      */
     public CreditAccount(double balance, String name, int limit) {
         super(balance, name);
-crLimit = limit;
+        crLimit = limit;
     }
 
     /**
@@ -33,8 +35,7 @@ crLimit = limit;
 
         if ((getBalance() + 30) >= crLimit) {
             throw new InsufficientFundsException();
-        } else
-        {
+        } else {
             setBalance(getBalance() + 30);
         }
 

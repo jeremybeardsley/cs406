@@ -1,14 +1,13 @@
 /**
- * 
+ *
  */
 package edu.ccsu.classwork.cs407.assignment2.tests.unit;
 
 import edu.ccsu.classwork.cs407.assignment2.*;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static junit.framework.Assert.*;
+
 
 /**
  * @author Jeremy Beardsley
@@ -16,61 +15,60 @@ import static org.junit.Assert.assertNotNull;
  */
 public class DeductFeesManipulatorTest {
 
-	private Account[] TestArrayOfAccounts;
-	private DeductFeesManipulator dfm;
+    private Account[] TestArrayOfAccounts;
+    private DeductFeesManipulator dfm;
 
-	/**
-	 * @throws java.lang.Exception
-     *
-	 */
-	@Before
-	public void setUp() {
-		System.out.println("[DEBUG] Entering setUp() in @Before");
 
-		TestArrayOfAccounts = new Account[2];
-		dfm = new DeductFeesManipulator();
-		TestArrayOfAccounts[0] = new BankAccount("testBankAccount", 100);
-		TestArrayOfAccounts[1] = new CreditAccount(35, "testCreditAccount", 100);
+    @Before
+    public void setUp() {
+        TestArrayOfAccounts = new Account[2];
+        dfm = new DeductFeesManipulator();
+        TestArrayOfAccounts[0] = new BankAccount("testBankAccount", 100);
+        TestArrayOfAccounts[1] = new CreditAccount(35, "testCreditAccount", 100);
+    }
 
-		System.out.println("[DEBUG] Leaving setUp() in @Before");
-	}
+    @Test
+    public void testDeductFees() throws InsufficientFundsException {
+        System.out.println("Testing deductFees() on BankAccount and CreditAccount.");
+        assertNotNull(TestArrayOfAccounts);
+        assertNotNull(dfm);
+        dfm.manipulateArray(TestArrayOfAccounts);
+        assertEquals("testBankAccountOne Balance is 80", 80,
+                TestArrayOfAccounts[0].getBalance(), 0);
+        assertEquals("testCreditAccountTwo Balance is 65", 65,
+                TestArrayOfAccounts[1].getBalance(), 0);
+        dfm.manipulateArray(TestArrayOfAccounts);
+        assertEquals("testBankAccountOne Balance is 60", 60,
+                TestArrayOfAccounts[0].getBalance(), 0);
+        assertEquals("testCreditAccountTwo Balance is 95", 95,
+                TestArrayOfAccounts[1].getBalance(), 0);
+        System.out.println("deductFees() has passed test for CreditAccount BankAccount");
+    }
 
-	@Test
-	public void AllAccountsHappy() {
-		System.out.println("[DEBUG] Entering AllFourAccountsHappy Test");
-		assertNotNull(TestArrayOfAccounts);
-		assertNotNull(dfm);
-		dfm.manipulateArray(TestArrayOfAccounts);
+    @Test
+    public void CreditAccountFailure() throws InsufficientFundsException {
+        System.out.println("Testing Credit Account by forcing it to go Over Limit");
+        try {
+            TestArrayOfAccounts[1].setBalance(90);
+            TestArrayOfAccounts[1].deductFees();
+            fail("Exception was not thrown for balance being over credit limit");
+        } catch (InsufficientFundsException ex) {
+            System.out.println("Exception Caught Correctly for Credit Account Going over Limit!");
+        }
+    }
 
-		assertEquals("testBankAccountOne Balance is 80", 80,
-				TestArrayOfAccounts[0].getBalance(), 0);
-		assertEquals("testCreditAccountTwo Balance is 65", 65,
-				TestArrayOfAccounts[1].getBalance(), 0);
+    @Test
+    public void BankAccountFailure() throws InsufficientFundsException {
+        System.out.println("Testing Bank Account by making it go under 0 balance");
+        TestArrayOfAccounts[0].setBalance(10);
+        assertNotNull(TestArrayOfAccounts);
+        assertNotNull(dfm);
+        try {
+            TestArrayOfAccounts[0].deductFees();
+            fail("Exception was not thrown for balance being negative");
+        } catch (InsufficientFundsException e) {
+            System.out.println("Exception Caught Correctly for Bank Account Balance under 0!");
+        }
 
-		System.out.println("[DEBUG] Leaving AllFourAccountsHappy Test");
-	}
-
-	@Test(expected = InsufficientFundsException.class)
-	public void CreditAccountFailure() {
-		System.out.println("[DEBUG] Entering CreditAccountFailure");
-		TestArrayOfAccounts[1].setBalance(95);
-		assertNotNull(TestArrayOfAccounts);
-		assertNotNull(dfm);
-		dfm.manipulateArray(TestArrayOfAccounts);
-		assertEquals("OverLimit and Balance is now 125!",
-				TestArrayOfAccounts[1].getBalance(), 125, 0);
-		System.out.println("[DEBUG] Leaving CreditAccountFailure");
-	}
-
-	@Test(expected = InsufficientFundsException.class)
-	public void BankAccountFailure() {
-		System.out.println("[DEBUG] Entering BankAccountFailure");
-		TestArrayOfAccounts[0].setBalance(10);
-		assertNotNull(TestArrayOfAccounts);
-		assertNotNull(dfm);
-		dfm.manipulateArray(TestArrayOfAccounts);
-		assertEquals("Balance isn't Negative as expected",
-				TestArrayOfAccounts[0].getBalance(), -10, 0);
-		System.out.println("[DEBUG] Leaving BankAccountFailure");
-	}
+    }
 }
