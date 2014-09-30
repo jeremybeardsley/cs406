@@ -1,71 +1,75 @@
-package edu.ccsu.classwork.cs406.assignment2;
-
-// TODO: Auto-generated Javadoc
+package edu.ccsu.classwork.cs407.assignment2;
 /**
- * Created by Bear on 9/23/2014.
+ * This is the base class for All Accounts
+ * @author Jeremy Beardsley
+ * @author Andrew McCoy
+ *
+ *
  */
 public abstract class Account {
 
 	/** The balance. */
-	protected double balance;
+	private double balance;
 
 	/** The name. */
-	protected String name;
+	private String name;
 
-	/**
-	 * Deduct fees.
+
+
+    /**
+	 * This is the base DeductFees method
 	 *
-	 * @throws InsufficientFundsException
-	 *             the insufficient funds exception
+	 * @throws InsufficientFundsException if there are errors within the DeductFees Method, this exception is thrown
+	 *
 	 */
 	public abstract void deductFees() throws InsufficientFundsException;
 
 	/**
-	 * Instantiates a new account.
+	 * Creates a new account with set balance and name.
 	 *
-	 * @param bal
-	 *            the bal
-	 * @param lname
-	 *            the lname
+	 * @param bal the Balance
+	 * @param lname the Name
 	 */
 	public Account(double bal, String lname) {
-		balance = bal;
-		name = lname;
+		this.balance = bal;
+		this.name = lname;
 	}
 
 	/**
-	 * Gets the balance.
+	 * Getter for balance.
+     * Primarily used by Test Classes
 	 *
 	 * @return the balance
 	 */
 	public double getBalance() {
-		return balance;
+		return this.balance;
 	}
 
 	/**
-	 * Sets the balance.
-	 *
-	 * @param balance
-	 *            the balance to set
+	 * Setter for the balance.
+	 * Primarily used by Test Classes
+     *
+	 * @param balance the balance to set
 	 */
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
 
 	/**
-	 * Gets the name.
+	 * Getter for the name.
+	 * Primarily used by Test Classes
 	 *
-	 * @return the name
+     * @return the name
 	 */
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	/**
-	 * Sets the name.
-	 *
-	 * @param name
-	 *            the name to set
+	 * Setter for the name.
+	 * Primarily used by Test Classes
+     *
+	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;

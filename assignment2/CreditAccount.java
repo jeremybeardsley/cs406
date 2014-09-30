@@ -1,37 +1,41 @@
-package edu.ccsu.classwork.cs406.assignment2;
+package edu.ccsu.classwork.cs407.assignment2;
 
-// TODO: Auto-generated Javadoc
 /**
- * Created by Bear on 9/23/2014.
+ * Credit Account that is a subtype of Account
+ *
+ * @author Jeremy Beardsley
+ * @author Andrew McCoy
  */
 public class CreditAccount extends Account {
     
-    /** The cr limit. */
+    /** The credit limit. */
     protected int crLimit;
 
     /**
-     * Instantiates a new credit account.
+     * Instantiates a new credit account with specified Balance, Name, and Credit Limit
      *
-     * @param balance the balance
-     * @param name the name
-     * @param limit the limit
+     * @param balance The balance
+     * @param name The name
+     * @param limit The limit
      */
     public CreditAccount(double balance, String name, int limit) {
         super(balance, name);
 crLimit = limit;
     }
 
-    /* (non-Javadoc)
-     * @see edu.ccsu.classwork.cs406.assignment2.Account#deductFees()
+    /**
+     * Checks to see if new fees would send the Account over Credit Limit
+     *
+     * @throws InsufficientFundsException if deductFees would cause the balance to go over the limit
      */
     @Override
     public void deductFees() throws InsufficientFundsException {
 
-        if ((balance + 30) >= crLimit) {
+        if ((getBalance() + 30) >= crLimit) {
             throw new InsufficientFundsException();
         } else
         {
-            balance += 30;
+            setBalance(getBalance() + 30);
         }
 
     }

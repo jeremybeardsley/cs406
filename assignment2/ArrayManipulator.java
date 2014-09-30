@@ -1,15 +1,17 @@
-package edu.ccsu.classwork.cs406.assignment2;
-
-// TODO: Auto-generated Javadoc
+package edu.ccsu.classwork.cs407.assignment2;
 /**
- * Created by Bear on 9/23/2014.
+ * Base class for Array Manipulators.
+ *
+ * @author Jeremy Beardsley
+ * @author Andrew McCoy
+ *
  */
 public interface ArrayManipulator {
     
     /**
      * Manipulate array.
      *
-     * @param accounts the accounts
+     * @param accounts an array of Accounts
      */
     public void manipulateArray(Account[] accounts);
 }

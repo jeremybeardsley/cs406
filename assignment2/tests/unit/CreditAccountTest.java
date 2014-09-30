@@ -1,18 +1,25 @@
-package edu.ccsu.classwork.cs406.assignment2.tests.unit;
+package edu.ccsu.classwork.cs407.assignment2.tests.unit;
+
+import edu.ccsu.classwork.cs407.assignment2.CreditAccount;
+import edu.ccsu.classwork.cs407.assignment2.InsufficientFundsException;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import edu.ccsu.classwork.cs406.assignment2.CreditAccount;
-import edu.ccsu.classwork.cs406.assignment2.InsufficientFundsException;
-
+/**
+ * @author Jeremy Beardsley
+ * @author Andrew McCoy
+ */
 public class CreditAccountTest {
 
+    /**
+     *
+     * @throws InsufficientFundsException if Credit Account would go over the Credit Limit
+     */
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() throws InsufficientFundsException {
 	}
 
 	@Test(expected = InsufficientFundsException.class)

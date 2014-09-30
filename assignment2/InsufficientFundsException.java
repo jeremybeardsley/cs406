@@ -1,7 +1,9 @@
-package edu.ccsu.classwork.cs406.assignment2;
+package edu.ccsu.classwork.cs407.assignment2;
 
 /**
- * Created by Bear on 9/23/2014.
+ * Thrown if Deduct would cause Insufficient Funds
+ * @author Jeremy Beardsley
+ * @author Andrew McCoy
  */
 public class InsufficientFundsException extends Throwable {
 }

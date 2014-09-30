@@ -1,16 +1,16 @@
-package edu.ccsu.classwork.cs406.assignment2;
+package edu.ccsu.classwork.cs407.assignment2;
 
-// TODO: Auto-generated Javadoc
 /**
- * Created by Bear on 9/23/2014.
+ * This is where new actual accounts would be initialized
+ * Contains some dummy test data.
+ * @author Jeremy Beardsley
+ * @author Andrew McCoy
  */
 public class Main {
 
 	/**
-	 * The main method.
 	 *
-	 * @param args
-	 *            the arguments
+	 * @param args the arguments for the main method
 	 */
 	public static void main(String[] args) {
 		Account[] acc = new Account[3];

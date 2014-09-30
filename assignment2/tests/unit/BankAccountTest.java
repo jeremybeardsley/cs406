@@ -1,29 +1,27 @@
 /**
  * 
  */
-package edu.ccsu.classwork.cs406.assignment2.tests.unit;
+package edu.ccsu.classwork.cs407.assignment2.tests.unit;
 
+import edu.ccsu.classwork.cs407.assignment2.BankAccount;
+import edu.ccsu.classwork.cs407.assignment2.InsufficientFundsException;
+import org.junit.*;
+import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-
-import edu.ccsu.classwork.cs406.assignment2.BankAccount;
-import edu.ccsu.classwork.cs406.assignment2.InsufficientFundsException;
 
 /**
- * @author andrew
- *
+ * @author Jeremy Beardsley
+ * @author Andrew McCoy
  */
 public class BankAccountTest {
 
 	/**
-	 * @throws java.lang.Exception
+	 * @throws edu.ccsu.classwork.cs407.assignment2.InsufficientFundsException if Bank Account would go below 0
 	 */
 	// @Before
 	@BeforeClass
-	public static void beforeClass() {
+	public static void beforeClass() throws InsufficientFundsException{
 		System.out.println("@BeforeClass");
 
 		// TODO I couldn't get the @Before & @BeforeClass to work so I did each

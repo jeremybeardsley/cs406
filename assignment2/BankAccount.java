@@ -1,29 +1,33 @@
-package edu.ccsu.classwork.cs406.assignment2;
+package edu.ccsu.classwork.cs407.assignment2;
 
-// TODO: Auto-generated Javadoc
 /**
- * Created by Bear on 9/23/2014.
+ * Bank Account that is a subtype of Account
+ *
+ * @author Jeremy Beardsley
+ * @author Andrew McCoy
  */
 public class BankAccount extends Account {
-	
+    /** The balance. */
+
 	/**
-	 * Instantiates a new bank account.
+	 * Creates Bank Account with specified name and Balance
 	 *
-	 * @param name the name
-	 * @param balance the balance
+	 * @param name the name used for Bank Account
+	 * @param balance the balance of the Bank Account
 	 */
 	public BankAccount(String name, double balance) {
+        super(balance, name);
 
-		super(balance, name);
 	}
 
-	/* (non-Javadoc)
-	 * @see edu.ccsu.classwork.cs406.assignment2.Account#deductFees()
+	/**
+	 * Checks if a deduction would cause negative balance and deducts if possible
+     * @throws InsufficientFundsException if deductFees would cause a negative Balance
 	 */
 	@Override
 	public void deductFees() throws InsufficientFundsException {
-		if ((balance - 20) > 0) {
-			balance -= 20;
+		if ((getBalance() - 20) >= 0) {
+			setBalance(getBalance() - 20);
 		} else {
 			throw new InsufficientFundsException();
 		}

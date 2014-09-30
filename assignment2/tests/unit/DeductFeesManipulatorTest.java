@@ -1,22 +1,18 @@
 /**
  * 
  */
-package edu.ccsu.classwork.cs406.assignment2.tests.unit;
+package edu.ccsu.classwork.cs407.assignment2.tests.unit;
+
+import edu.ccsu.classwork.cs407.assignment2.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-import org.junit.Before;
-import org.junit.Test;
-
-import edu.ccsu.classwork.cs406.assignment2.Account;
-import edu.ccsu.classwork.cs406.assignment2.BankAccount;
-import edu.ccsu.classwork.cs406.assignment2.CreditAccount;
-import edu.ccsu.classwork.cs406.assignment2.DeductFeesManipulator;
-import edu.ccsu.classwork.cs406.assignment2.InsufficientFundsException;
-
 /**
- * @author andrew & jeremy @ *
+ * @author Jeremy Beardsley
+ * @author Andrew McCoy
  */
 public class DeductFeesManipulatorTest {
 
@@ -25,6 +21,7 @@ public class DeductFeesManipulatorTest {
 
 	/**
 	 * @throws java.lang.Exception
+     *
 	 */
 	@Before
 	public void setUp() {
