@@ -11,7 +11,7 @@ public class CreditAccount extends Account {
     /**
      * The credit limit.
      */
-    protected int crLimit;
+    protected double crLimit;
 
     /**
      * Instantiates a new credit account with specified Balance, Name, and Credit Limit
@@ -20,7 +20,7 @@ public class CreditAccount extends Account {
      * @param name    The name
      * @param limit   The limit
      */
-    public CreditAccount(double balance, String name, int limit) {
+    public CreditAccount(double balance, String name, double limit) {
         super(balance, name);
         crLimit = limit;
     }

@@ -10,6 +10,7 @@ import static junit.framework.Assert.*;
 
 
 /**
+ * Unit Test
  * @author Jeremy Beardsley
  * @author Andrew McCoy
  */
@@ -45,6 +46,7 @@ public class DeductFeesManipulatorTest {
         System.out.println("deductFees() has passed test for CreditAccount BankAccount");
     }
 
+
     @Test
     public void CreditAccountFailure() throws InsufficientFundsException {
         System.out.println("Testing Credit Account by forcing it to go Over Limit");
@@ -56,6 +58,7 @@ public class DeductFeesManipulatorTest {
             System.out.println("Exception Caught Correctly for Credit Account Going over Limit!");
         }
     }
+
 
     @Test
     public void BankAccountFailure() throws InsufficientFundsException {
